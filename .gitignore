@@ -1,6 +1,7 @@
 .venv
 __pycache__
 .ruff_cache
+.DS_Store
 
 # Згенеровані gRPC файли 
 signaling_pb2.py
