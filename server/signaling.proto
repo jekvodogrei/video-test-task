@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package signaling;
+
+message OfferMessage {
+  string sdp = 1;
+  string type = 2;
+}
+
+message AnswerMessage {
+  string sdp = 1;
+  string type = 2;
+}
+
+message ChatMessage {
+  string sender = 1;
+  string text = 2;
+  string debug = 66;
+}
+
+message ChatResponse {
+  bool success = 1;
+  string echo = 2;
+}
+
+service Signaling {
+  rpc SendOffer (OfferMessage) returns (AnswerMessage);
+  rpc SendMessage (ChatMessage) returns (ChatResponse);
+  rpc StreamMessages (ChatMessage) returns (stream ChatMessage);
+}
